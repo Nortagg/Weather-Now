@@ -1,0 +1,151 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .forecast-title-days {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    color: rgb(126, 107, 87);
+    font-weight: 500;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .days-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    //overflow-y: scroll ;
+    height: 270px;
+    .forecast-root {
+      .forecast-item {
+        .days {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-direction: row;
+          background-color: rgb(18, 21, 20);
+          box-shadow: 0px 0px 2px rgb(10, 10, 10);
+          width: 450px;
+          height: 80px;
+          border-radius: 1rem;
+          margin: 5px;
+          border: none;
+          transition: 1s;
+          &:hover {
+            background-color: rgb(21, 30, 26);
+          }
+
+          .left-info {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: row;
+            .forecast-day-icon {
+              padding: 0.5rem;
+            }
+            .day-of-the-week-description {
+              .day-of-the-week {
+                font-size: 16px;
+                color: #eaf0ed;
+                text-align: left;
+                margin: 4px 0;
+              }
+              .day-description {
+                font-size: 16px;
+                text-align: left;
+                margin: 4px 0;
+                color: #a6b3cc;
+              }
+            }
+          }
+          .right-forecast-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-right: 1rem;
+            .temp-max {
+              color: #eaf0ed;
+              font-size: 20px;
+              letter-spacing: -1px;
+              margin: 2px 0;
+            }
+            .temp-min {
+              font-size: 20px;
+              color: rgb(136, 149, 160);
+              margin: 2px 0;
+              letter-spacing: -1px;
+            }
+          }
+        }
+        .first-day {
+          box-shadow: 0px 0px 5px rgb(122, 86, 155);
+        }
+        .forecast-content {
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          .forecast-mini-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            .forecast-hour-small {
+              font-size: 14px;
+              margin: 4px 0;
+            }
+            .forecast-icon-small {
+              width: 35px;
+              height: 35px;
+              padding: 5px;
+            }
+            .forecast-temp-small {
+              font-size: 18px;
+              margin: 4px 0;
+            }
+          }
+        }
+        .forecast-content {
+          overflow: hidden;
+        }
+
+        .forecast-content[data-state="open"] {
+          animation: slideDown 300ms ease-out;
+          animation-fill-mode: forwards;
+        }
+
+        .forecast-content[data-state="closed"] {
+          animation: slideUp 300ms ease-out;
+          animation-fill-mode: forwards;
+        }
+
+        @keyframes slideDown {
+          from {
+            height: 0;
+            opacity: 0;
+          }
+          to {
+            height: var(--radix-accordion-content-height);
+            opacity: 1;
+          }
+        }
+
+        @keyframes slideUp {
+          from {
+            height: var(--radix-accordion-content-height);
+            opacity: 1;
+          }
+          to {
+            height: 0;
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+}

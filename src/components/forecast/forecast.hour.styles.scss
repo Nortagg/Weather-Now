@@ -1,0 +1,99 @@
+.wrapper-hours {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .forecast-title-hours {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    color: rgb(126, 107, 87);
+    font-weight: 500;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .hours-info-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+    height: 270px;
+
+    .info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;
+      width: 450px;
+      height: 80px;
+      background-color: rgb(18, 21, 20);
+      border-radius: 1rem;
+      margin: 5px;
+      scroll-snap-align: center;
+      .hour-icon-info-description {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .hour-icon {
+          padding: 0.5rem;
+        }
+
+        .hour-info-description {
+          .hour-info {
+            font-size: 20px;
+            text-align: left;
+            margin: 3px 0;
+          }
+          .hour-description {
+            text-align: left;
+            margin: 3px 0;
+            color: #a6b3cc;
+          }
+        }
+      }
+
+      .hour-temp {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+        font-weight: 300;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        margin-right: 10px;
+        letter-spacing: -1px;
+      }
+    }
+    .active {
+      box-shadow: 0px 0px 5px rgb(122, 86, 155);
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px rgb(17, 37, 26);
+  border-radius: 1rem;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(172, 168, 168);
+  border-radius: 1rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #575757;
+}

@@ -69,37 +69,42 @@ const Forecast = ({ forecastData, currentUnit }) => {
                   <p className="temp-min">{day.tempMin}</p>
                 </div>
               </Accordion.Trigger>
-              <Accordion.Content className="forecast-content">
-                {forecastData.forecast.forecastday[index].hour
-                  .slice(0, 24)
-                  .filter((_, array) => array % 3 === 0)
-                  .map((hours, hourIndex) => {
-                    const metricData = {
-                      temp: `${Math.round(hours.temp_c)}°C`,
-                    };
-                    const imperialData = {
-                      temp: `${Math.round(hours.temp_f)}°F`,
-                    };
-                    const weatherData = {
-                      metric: metricData,
-                      imperial: imperialData,
-                    };
-                    return (
-                      <div className="forecast-mini-container" key={hourIndex}>
-                        <p className="forecast-hour-small">
-                          {moment(hours.time).format("HH:mm")}
-                        </p>
-                        <img
-                          className="forecast-icon-small"
-                          src={hours.condition.icon}
-                          alt="weather-icon"
-                        ></img>
-                        <p className="forecast-temp-small">
-                          {weatherData[currentUnit].temp}
-                        </p>
-                      </div>
-                    );
-                  })}
+              <Accordion.Content className="forecast-content" asChild>
+                <div className="content-container">
+                  {forecastData.forecast.forecastday[index].hour
+                    .slice(0, 24)
+                    .filter((_, array) => array % 3 === 0)
+                    .map((hours, hourIndex) => {
+                      const metricData = {
+                        temp: `${Math.round(hours.temp_c)}°C`,
+                      };
+                      const imperialData = {
+                        temp: `${Math.round(hours.temp_f)}°F`,
+                      };
+                      const weatherData = {
+                        metric: metricData,
+                        imperial: imperialData,
+                      };
+                      return (
+                        <div
+                          className="forecast-mini-container"
+                          key={hourIndex}
+                        >
+                          <p className="forecast-hour-small">
+                            {moment(hours.time).format("HH:mm")}
+                          </p>
+                          <img
+                            className="forecast-icon-small"
+                            src={hours.condition.icon}
+                            alt="weather-icon"
+                          ></img>
+                          <p className="forecast-temp-small">
+                            {weatherData[currentUnit].temp}
+                          </p>
+                        </div>
+                      );
+                    })}
+                </div>
               </Accordion.Content>
             </Accordion.Item>
           ))}

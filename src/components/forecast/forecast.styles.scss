@@ -19,9 +19,12 @@
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    //overflow-y: scroll ;
     height: 270px;
     .forecast-root {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
       .forecast-item {
         .days {
           display: flex;
@@ -110,18 +113,13 @@
             }
           }
         }
-        .forecast-content {
-          overflow: hidden;
-        }
 
         .forecast-content[data-state="open"] {
           animation: slideDown 300ms ease-out;
-          animation-fill-mode: forwards;
         }
 
         .forecast-content[data-state="closed"] {
           animation: slideUp 300ms ease-out;
-          animation-fill-mode: forwards;
         }
 
         @keyframes slideDown {

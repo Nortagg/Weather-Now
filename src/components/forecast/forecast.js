@@ -1,6 +1,7 @@
 import "./forecast.styles.scss";
 import * as Accordion from "@radix-ui/react-accordion";
 import moment from "moment/moment";
+import { FiChevronDown } from "react-icons/fi";
 
 const Forecast = ({ forecastData, currentUnit }) => {
   if (
@@ -17,11 +18,13 @@ const Forecast = ({ forecastData, currentUnit }) => {
       const metricData = {
         tempMax: `${Math.round(days.day.maxtemp_c)} °C`,
         tempMin: `${Math.round(days.day.mintemp_c)} °C`,
+        dayoftheweek: moment(days.date).format("dddd, Do MMMM YYYY"),
       };
 
       const imperialData = {
         tempMax: `${Math.round(days.day.maxtemp_f)} °F`,
         tempMin: `${Math.round(days.day.mintemp_f)} °F`,
+        dayoftheweek: moment(days.date).format("dddd, MMMM Do YYYY"),
       };
 
       const weatherData = {
@@ -30,7 +33,6 @@ const Forecast = ({ forecastData, currentUnit }) => {
       };
 
       return {
-        dayoftheweek: moment(days.date).format("dddd, Do MMMM YYYY"),
         icon: days.day.condition.icon,
         description: days.day.condition.text,
         ...weatherData[currentUnit],
@@ -64,6 +66,9 @@ const Forecast = ({ forecastData, currentUnit }) => {
                     <p className="day-description">{day.description}</p>
                   </div>
                 </div>
+                <div className="arrow-accordion">
+                  <FiChevronDown />
+                </div>
                 <div className="right-forecast-info">
                   <p className="temp-max">{day.tempMax}</p>
                   <p className="temp-min">{day.tempMin}</p>
@@ -77,9 +82,11 @@ const Forecast = ({ forecastData, currentUnit }) => {
                     .map((hours, hourIndex) => {
                       const metricData = {
                         temp: `${Math.round(hours.temp_c)}°C`,
+                        time: moment(hours.time).format("HH:mm"),
                       };
                       const imperialData = {
                         temp: `${Math.round(hours.temp_f)}°F`,
+                        time: moment(hours.time).format("LT"),
                       };
                       const weatherData = {
                         metric: metricData,
@@ -91,7 +98,14 @@ const Forecast = ({ forecastData, currentUnit }) => {
                           key={hourIndex}
                         >
                           <p className="forecast-hour-small">
-                            {moment(hours.time).format("HH:mm")}
+                            {weatherData[currentUnit].time
+                              .split(" ")
+                              .map((PMAM, indexBr) => (
+                                <div key={indexBr}>
+                                  {PMAM}
+                                  <br />
+                                </div>
+                              ))}
                           </p>
                           <img
                             className="forecast-icon-small"

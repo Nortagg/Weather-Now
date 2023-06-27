@@ -30,10 +30,12 @@ const ForecastHour = ({ forecastData, currentUnit }) => {
     .map((hours) => {
       const metricData = {
         temp: `${Math.round(hours.temp_c)}°C`,
+        time: moment(hours.time).format("HH:mm"),
       };
 
       const imperialData = {
         temp: `${Math.round(hours.temp_f)}°F`,
+        time: moment(hours.time).format("LT"),
       };
 
       const weatherData = {
@@ -42,7 +44,6 @@ const ForecastHour = ({ forecastData, currentUnit }) => {
       };
 
       return {
-        time: moment(hours.time).format("HH:mm"),
         hourTarget: moment(hours.time).format("HH"),
         icon: hours.condition.icon,
         description: hours.condition.text,

@@ -57,6 +57,7 @@ const InDetail = () => {
     tempMin: `${Math.round(
       forecastData.forecast.forecastday[0].day.mintemp_c
     )}°C`,
+    time: moment(currentWeatherData.location.localtime).format("dddd, HH:mm"),
   };
 
   const imperialData = {
@@ -71,6 +72,7 @@ const InDetail = () => {
     tempMin: `${Math.round(
       forecastData.forecast.forecastday[0].day.mintemp_f
     )}°F`,
+    time: moment(currentWeatherData.location.localtime).format("dddd, LT"),
   };
 
   const weatherData = {
@@ -87,11 +89,7 @@ const InDetail = () => {
               {currentWeatherData.location.name},{" "}
               {currentWeatherData.location.country}
             </p>
-            <p className="top-hours">
-              {moment(currentWeatherData.location.localtime).format(
-                "dddd, HH:mm"
-              )}
-            </p>
+            <p className="top-hours">{weatherData[currentUnit].time}</p>
           </div>
           <button
             className="units-button"

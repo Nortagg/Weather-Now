@@ -17,11 +17,13 @@ const CurrentWeather = ({ currentWeatherData, currentUnit, forecastData }) => {
   const metricData = {
     temp: `${Math.round(currentWeatherData.current.temp_c)}°C`,
     wind: `${currentWeatherData.current.wind_kph}km/h`,
+    time: moment(currentWeatherData.location.localtime).format("HH:mm"),
   };
 
   const imperialData = {
     temp: `${Math.round(currentWeatherData.current.temp_f)}°F`,
     wind: `${currentWeatherData.current.wind_mph}mph`,
+    time: moment(currentWeatherData.location.localtime).format("LT"),
   };
 
   const weatherData = {
@@ -55,9 +57,7 @@ const CurrentWeather = ({ currentWeatherData, currentUnit, forecastData }) => {
             {currentWeatherData.location.name},{" "}
             {currentWeatherData.location.country}
           </h2>
-          <h2 className="location-time">
-            {moment(currentWeatherData.location.localtime).format("HH:mm")}
-          </h2>
+          <h2 className="location-time">{weatherData[currentUnit].time}</h2>
         </div>
         <div className="icon-description-middle-part">
           <img

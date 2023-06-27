@@ -14,12 +14,17 @@
     margin-top: 5px;
     margin-bottom: 5px;
   }
+  .days-container::-webkit-scrollbar {
+    display: none;
+  }
   .days-container {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    height: 270px;
+    overflow-y: scroll;
+    height: 269px;
+
     .forecast-root {
       display: flex;
       justify-content: flex-start;
@@ -27,6 +32,7 @@
       flex-direction: column;
       .forecast-item {
         .days {
+          position: relative;
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -58,6 +64,7 @@
                 text-align: left;
                 margin: 4px 0;
               }
+
               .day-description {
                 font-size: 16px;
                 text-align: left;
@@ -66,6 +73,15 @@
               }
             }
           }
+          .arrow-accordion {
+            position: absolute;
+            font-size: 18px;
+            top: 75%;
+            left: 50%;
+            color: #eaf0ed;
+            transition: 300ms;
+          }
+
           .right-forecast-info {
             display: flex;
             justify-content: center;
@@ -86,21 +102,28 @@
             }
           }
         }
+        .days[data-state="open"] > .arrow-accordion {
+          transform: rotate(180deg);
+        }
         .first-day {
           box-shadow: 0px 0px 5px rgb(122, 86, 155);
         }
         .forecast-content {
           display: flex;
-          justify-content: space-evenly;
+          justify-content: center;
           align-items: center;
           .forecast-mini-container {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            margin: 0 4px;
             .forecast-hour-small {
-              font-size: 14px;
+              text-align: center;
+              font-size: 16px;
               margin: 4px 0;
+              font-weight: 300;
+              color: #eff1f1;
             }
             .forecast-icon-small {
               width: 35px;
@@ -108,8 +131,11 @@
               padding: 5px;
             }
             .forecast-temp-small {
-              font-size: 18px;
+              color: #ffffff;
+              font-size: 20px;
               margin: 4px 0;
+              letter-spacing: -1px;
+              font-weight: 300;
             }
           }
         }

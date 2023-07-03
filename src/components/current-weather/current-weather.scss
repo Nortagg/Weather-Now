@@ -18,12 +18,14 @@
       margin-left: 5px;
     }
     .link-current {
+      font-size: 18px;
       margin-right: 5px;
       color: rgb(121, 99, 141);
       text-decoration: none;
       transition: 0.5s;
       &:hover {
-        color: rgba(121, 99, 141, 0.5);
+        color: rgba(121, 99, 141, 0.6);
+        text-decoration: underline;
       }
     }
   }
@@ -34,8 +36,8 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: solid 5px rgb(61, 43, 77);
-    box-shadow: 0px 0px 5px rgb(122, 86, 155);
+    border: solid 4px rgb(61, 43, 77);
+    box-shadow: 0px 0px 4px rgb(122, 86, 155);
     width: 850px;
     height: 400px;
     padding: 20px;
@@ -68,16 +70,26 @@
         background-color: rgba(21, 30, 26, 0.9);
         box-shadow: 0px 0px 2px rgb(190, 121, 218);
       }
-      .location-time {
+      .time-last-update {
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
         align-items: center;
-        margin: 0;
-        font-size: 24px;
-        width: 120px;
-        overflow: hidden;
+        flex-direction: column;
+        width: 200px;
         height: 40px;
-        font-weight: 500;
+        .last-update {
+          text-align: right;
+          width: 200px;
+          margin: 0;
+          font-size: 16px;
+        }
+        .location-time {
+          text-align: right;
+          width: 200px;
+          margin: 0;
+          font-size: 22px;
+          font-weight: 500;
+        }
       }
     }
     .icon-description-middle-part {
@@ -90,9 +102,11 @@
       padding: 1rem;
       margin-bottom: 2rem;
       z-index: 1;
+
       .current-weather-icon {
         width: 100px;
         height: 100px;
+        filter: drop-shadow(0px 0px 5px rgb(7, 7, 7));
       }
       .weather-description {
         text-align: center;
@@ -138,8 +152,9 @@
         font-size: 90px;
         margin-top: 20px;
         margin-bottom: 0;
-        font-weight: 200;
+        font-weight: 300;
         letter-spacing: -5px;
+        text-shadow: 0 0 5px black;
       }
     }
   }

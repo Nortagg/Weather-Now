@@ -53,7 +53,7 @@ const ForecastHour = ({ forecastData, currentUnit }) => {
 
   return (
     <div className="wrapper-hours">
-      <h1 className="forecast-title-hours">Forecast by hour</h1>
+      <h1 className="forecast-title-hours">Forecast by 1h</h1>
       <div className="hours-info-container">
         {DAY_HOURS.map((hour, index) => (
           <div

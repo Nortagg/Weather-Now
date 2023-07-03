@@ -101,10 +101,10 @@ const Forecast = ({ forecastData, currentUnit }) => {
                             {weatherData[currentUnit].time
                               .split(" ")
                               .map((PMAM, indexBr) => (
-                                <div key={indexBr}>
+                                <span key={indexBr}>
                                   {PMAM}
                                   <br />
-                                </div>
+                                </span>
                               ))}
                           </p>
                           <img

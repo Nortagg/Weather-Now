@@ -6,10 +6,12 @@ import CurrentWeather from "../current-weather/current-weather";
 import Forecast from "../forecast/forecast";
 import ForecastHour from "../forecast/forecast.hour";
 import { AiOutlineSearch } from "react-icons/ai";
+import SelectBar from "./select";
 
 const SearchBar = () => {
   const [search, setSearch] = useState("");
   const [currentWeatherData, setCurrentWeatherData] = useState(null);
+  const [selectedSelectItem, setSelectedSelectItem] = useState("");
   const [forecastData, setForecastData] = useState(null);
   const [currentUnit, setCurrentUnit] = useState("metric");
   const debouncedValue = useDebounce(search, 600);
@@ -43,6 +45,11 @@ const SearchBar = () => {
   const handleChange = (event) => {
     setSearch(event.target.value);
   };
+
+  const handleSelectChange = (selectedValue) => {
+    setSelectedSelectItem(selectedValue);
+    setSearch(selectedValue);
+  };
   if ((!currentWeatherData, !forecastData))
     return (
       <div className="search-img-container">
@@ -65,6 +72,13 @@ const SearchBar = () => {
               <AiOutlineSearch />
             </span>
           </div>
+          <SelectBar
+            classNameSelection={"selection"}
+            classNameContent={"select-content"}
+            handleSelectChange={handleSelectChange}
+            selectedSelectItem={selectedSelectItem}
+          />
+
           <img
             className="img-loading"
             src="https://w.wallhaven.cc/full/r2/wallhaven-r252rq.jpg"
@@ -76,16 +90,6 @@ const SearchBar = () => {
   return (
     <div className="search-container">
       <div className="input-location">
-        <button
-          className="units-button"
-          onClick={() =>
-            setCurrentUnit((unit) =>
-              unit === "metric" ? "imperial" : "metric"
-            )
-          }
-        >
-          {currentUnit === "metric" ? "Imperial" : "Metric"}
-        </button>
         <div className="input-and-icon">
           <input
             className="input-look"
@@ -97,8 +101,27 @@ const SearchBar = () => {
           <span className="icon-input-look">
             <AiOutlineSearch />
           </span>
+
+          <button
+            className="units-button"
+            onClick={() =>
+              setCurrentUnit((unit) =>
+                unit === "metric" ? "imperial" : "metric"
+              )
+            }
+          >
+            {currentUnit === "metric" ? "Imperial" : "Metric"}
+          </button>
         </div>
       </div>
+
+      <SelectBar
+        classNameSelection={"selection-inside"}
+        classNameContent={"select-content-inside"}
+        handleSelectChange={handleSelectChange}
+        selectedSelectItem={selectedSelectItem}
+      />
+
       <div className="current-hour-day">
         <div className="current-weather-display">
           <CurrentWeather

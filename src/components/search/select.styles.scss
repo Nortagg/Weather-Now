@@ -1,0 +1,88 @@
+.selection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 295px;
+  color: rgb(190, 199, 216);
+  background-color: transparent;
+  outline: none;
+  border: none;
+  margin-bottom: 4rem;
+  margin-top: 5px;
+  font-size: 17px;
+  &:hover {
+    box-shadow: 0px 0px 2px rgb(119, 209, 209);
+    border-radius: 10px;
+  }
+  .select-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+  }
+}
+.select-content {
+  position: relative;
+  text-align: center;
+  color: rgb(190, 199, 216);
+  font-size: 17px;
+  top: 12rem;
+  z-index: 1;
+  background-color: #0c384db6;
+  width: 295px;
+  border-radius: 1rem;
+  .city-label-select {
+    background-color: #044766b6;
+  }
+  .select-item {
+    cursor: pointer;
+    &:hover {
+      outline: none;
+      text-decoration: underline cadetblue;
+    }
+  }
+}
+
+.selection-inside {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 295px;
+  color: rgb(190, 199, 216);
+  background-color: transparent;
+  outline: none;
+  border: none;
+  font-size: 17px;
+  &:hover {
+    box-shadow: 0px 0px 2px rgb(119, 209, 209);
+    border-radius: 10px;
+  }
+  .select-icon-inside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+  }
+}
+
+.select-content-inside {
+  position: relative;
+  text-align: center;
+  color: rgb(190, 199, 216);
+  font-size: 17px;
+  bottom: 20rem;
+  z-index: 2;
+  background-color: #0c384db6;
+  width: 295px;
+  border-radius: 1rem;
+  .city-label-select-inside {
+    background-color: #044766b6;
+  }
+  .select-item-inside {
+    cursor: pointer;
+    &:hover {
+      outline: none;
+      text-decoration: underline cadetblue;
+    }
+  }
+}

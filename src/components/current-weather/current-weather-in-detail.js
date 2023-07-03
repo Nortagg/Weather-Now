@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 import { WiHumidity, WiDaySunny } from "react-icons/wi";
 import { CgCompressV } from "react-icons/cg";
-import { BsWind, BsEye } from "react-icons/bs";
+import { BsWind, BsEye, BsSunrise, BsSunset } from "react-icons/bs";
 import { RiArrowGoBackLine } from "react-icons/ri";
 
 const InDetail = () => {
@@ -58,6 +58,14 @@ const InDetail = () => {
       forecastData.forecast.forecastday[0].day.mintemp_c
     )}°C`,
     time: moment(currentWeatherData.location.localtime).format("dddd, HH:mm"),
+    sunRiseTime: moment(
+      forecastData.forecast.forecastday[0].astro.sunrise,
+      "LT"
+    ).format("HH:mm"),
+    sunSetTime: moment(
+      forecastData.forecast.forecastday[0].astro.sunset,
+      "LT"
+    ).format("HH:mm"),
   };
 
   const imperialData = {
@@ -73,11 +81,17 @@ const InDetail = () => {
       forecastData.forecast.forecastday[0].day.mintemp_f
     )}°F`,
     time: moment(currentWeatherData.location.localtime).format("dddd, LT"),
+    sunRiseTime: forecastData.forecast.forecastday[0].astro.sunrise,
+    sunSetTime: forecastData.forecast.forecastday[0].astro.sunset,
   };
 
   const weatherData = {
     metric: metricData,
     imperial: imperialData,
+  };
+
+  const getImageSource = (code) => {
+    return `/weather-img/${code}.jpg`;
   };
 
   return (
@@ -89,6 +103,7 @@ const InDetail = () => {
               {currentWeatherData.location.name},{" "}
               {currentWeatherData.location.country}
             </p>
+            <div className="border-location-time"></div>
             <p className="top-hours">{weatherData[currentUnit].time}</p>
           </div>
           <button
@@ -118,18 +133,41 @@ const InDetail = () => {
             <p className="description-top-side">
               {currentWeatherData.current.condition.text}
             </p>
+            <img
+              className="details-code-icon"
+              alt="weather"
+              src={getImageSource(currentWeatherData.current.condition.code)}
+            ></img>
           </div>
-          <div className="min-max-rain-chanse">
-            <p className="details-max-temp">
-              {weatherData[currentUnit].tempMax}
-            </p>
-            <p className="details-min-temp">
-              {weatherData[currentUnit].tempMin}
-            </p>
-            <p className="details-chanse-of-rain">
-              Chanse to rain:{" "}
-              {forecastData.forecast.forecastday[0].day.daily_chance_of_rain}%
-            </p>
+          <div className="sun-min-max-temps">
+            <div className="sun-position-container">
+              <div className="sun-rise">
+                <div className="sun-icons">
+                  <BsSunrise />
+                </div>
+                <p>{weatherData[currentUnit].sunRiseTime}</p>
+              </div>
+              <div className="sun-set">
+                <div className="sun-icons">
+                  <BsSunset />
+                </div>
+                <p>{weatherData[currentUnit].sunSetTime}</p>
+              </div>
+            </div>
+            <div className="min-max-rain-chanse">
+              <div className="max-min-temps-display">
+                <p className="details-max-temp">
+                  {weatherData[currentUnit].tempMax}
+                </p>
+                <p className="details-min-temp">
+                  {weatherData[currentUnit].tempMin}
+                </p>
+              </div>
+              <p className="details-chanse-of-rain">
+                Chanse to rain:{" "}
+                {forecastData.forecast.forecastday[0].day.daily_chance_of_rain}%
+              </p>
+            </div>
           </div>
         </div>
         <div className="bottom-side">

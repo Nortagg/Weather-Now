@@ -34,7 +34,6 @@ const CurrentWeather = ({ currentWeatherData, currentUnit, forecastData }) => {
   const getImageSource = (code) => {
     return `/weather-img/${code}.jpg`;
   };
-
   return (
     <div className="wrapper-current">
       <div className="title-link">
@@ -57,7 +56,13 @@ const CurrentWeather = ({ currentWeatherData, currentUnit, forecastData }) => {
             {currentWeatherData.location.name},{" "}
             {currentWeatherData.location.country}
           </h2>
-          <h2 className="location-time">{weatherData[currentUnit].time}</h2>
+          <div className="time-last-update">
+            <p className="last-update">
+              Last update:{" "}
+              {moment(currentWeatherData.current.last_updated).fromNow()}
+            </p>
+            <h2 className="location-time">{weatherData[currentUnit].time}</h2>
+          </div>
         </div>
         <div className="icon-description-middle-part">
           <img

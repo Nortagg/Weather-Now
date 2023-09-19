@@ -2,6 +2,7 @@ import "./app.scss";
 import SearchBar from "./components/search/search";
 import { Routes, Route } from "react-router-dom";
 import InDetail from "./components/current-weather/current-weather-in-detail";
+
 function App() {
   return (
     <div className="App">

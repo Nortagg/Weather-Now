@@ -1,96 +1,3 @@
-.search-img-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-
-  .search-loading {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-color: #202222;
-    background-image: linear-gradient(45deg, #022222 10%, #113366 100%);
-    border: 8px solid rgb(35, 97, 112);
-    border-radius: 3rem;
-    width: 400px;
-    height: 600px;
-
-    .weather-app-title {
-      display: flex;
-      position: relative;
-      background-image: url(https://images.pexels.com/photos/1028600/pexels-photo-1028600.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
-      background-size: cover;
-      background-clip: text;
-      font-size: 60px;
-      color: transparent;
-      filter: drop-shadow(0px 0px 4px rgb(7, 7, 7));
-
-      margin-bottom: 3rem;
-      margin-top: 1rem;
-    }
-
-    .input-icon {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      .input-look {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: none;
-        width: 290px;
-        height: 25px;
-        font-size: 24px;
-        background: none;
-        color: rgb(190, 199, 216);
-        border-bottom: solid 1px rgb(190, 199, 216);
-        transition: 0.5s;
-      }
-      .icon-input-look {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        font-size: 25px;
-        color: rgb(141, 136, 136);
-        left: 17rem;
-        height: 20px;
-      }
-    }
-
-    .input-look[type="text"]:focus {
-      outline: none;
-      border-bottom: solid 1px rgba(190, 199, 216, 0.8);
-    }
-    .input-look:focus::placeholder {
-      opacity: 0.3;
-      transition: 1s;
-    }
-    .input-look::placeholder {
-      color: rgb(190, 199, 216);
-    }
-    .img-loading {
-      width: 320px;
-      height: 320px;
-      border-radius: 100%;
-      object-fit: cover;
-      box-shadow: 0px 0px 40px rgb(13, 93, 117);
-      animation: spinning linear infinite 60s;
-
-      @keyframes spinning {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-    }
-  }
-}
-
 .search-container {
   display: flex;
   justify-content: center;
@@ -107,35 +14,29 @@
     width: 500px;
     height: 48px;
 
-    .input-and-icon {
+    .input-look {
+      position: absolute;
       display: flex;
       justify-content: center;
       align-items: center;
-
-      .input-look {
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: none;
-        width: 280px;
-        height: 25px;
-        font-size: 24px;
-        background: none;
-        color: rgb(234, 240, 237);
-        border-bottom: solid 1px rgb(62, 51, 72);
-        transition: 0.5s;
-      }
-      .icon-input-look {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 25px;
-        color: rgb(62, 51, 72);
-        left: 10rem;
-        height: 20px;
-      }
+      border: none;
+      width: 280px;
+      height: 25px;
+      font-size: 24px;
+      background: none;
+      color: rgb(234, 240, 237);
+      border-bottom: solid 1px rgb(62, 51, 72);
+      transition: 0.5s;
+    }
+    .icon-input-look {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 25px;
+      color: rgb(62, 51, 72);
+      left: 10rem;
+      height: 20px;
     }
 
     .input-look[type="text"]:focus {
@@ -182,8 +83,12 @@
     .forecast-days-hour {
       display: flex;
       justify-content: center;
-      align-items: flex-start;
-      flex-direction: row;
+      align-items: center;
+      .map {
+        width: 300px;
+        height: 300px;
+        border-radius: 1rem;
+      }
     }
   }
 }

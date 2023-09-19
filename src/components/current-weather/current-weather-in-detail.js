@@ -48,9 +48,9 @@ const InDetail = () => {
   const metricData = {
     temp: `${Math.round(currentWeatherData.current.temp_c)}°C`,
     feelslike: `${Math.round(currentWeatherData.current.feelslike_c)}°C`,
-    distance: `${currentWeatherData.current.vis_km}km`,
-    wind: `${currentWeatherData.current.wind_kph}km/h`,
-    pressure: `${currentWeatherData.current.pressure_mb}mb`,
+    distance: `${currentWeatherData.current.vis_km} km`,
+    wind: `${currentWeatherData.current.wind_kph} km/h`,
+    pressure: `${currentWeatherData.current.pressure_mb} mb`,
     tempMax: `${Math.round(
       forecastData.forecast.forecastday[0].day.maxtemp_c
     )}°C`,
@@ -71,9 +71,9 @@ const InDetail = () => {
   const imperialData = {
     temp: `${Math.round(currentWeatherData.current.temp_f)}°F`,
     feelslike: `${Math.round(currentWeatherData.current.feelslike_f)}°F`,
-    distance: `${currentWeatherData.current.vis_miles}mi`,
-    wind: `${currentWeatherData.current.wind_mph}mph`,
-    pressure: `${currentWeatherData.current.pressure_in}in`,
+    distance: `${currentWeatherData.current.vis_miles} mi`,
+    wind: `${currentWeatherData.current.wind_mph} mph`,
+    pressure: `${currentWeatherData.current.pressure_in} in`,
     tempMax: `${Math.round(
       forecastData.forecast.forecastday[0].day.maxtemp_f
     )}°F`,
@@ -95,7 +95,13 @@ const InDetail = () => {
   };
 
   return (
-    <div>
+    <div className="info-map-container">
+      <iframe
+        className="map"
+        src={`https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d23137.5269737583!2d${currentWeatherData.location.lon}!3d${currentWeatherData.location.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssr!2srs!4v1689439613220!5m2!1ssr!2srs`}
+        loading="lazy"
+        title="map"
+      ></iframe>
       <div className="InDetail-container">
         <div className="location-top">
           <div className="top-city-time">

@@ -5,8 +5,9 @@ import { useDebounce } from "./debounce";
 import CurrentWeather from "../current-weather/current-weather";
 import Forecast from "../forecast/forecast";
 import ForecastHour from "../forecast/forecast.hour";
-import { AiOutlineSearch } from "react-icons/ai";
 import SelectBar from "./select";
+import HomePage from "../home/home.page";
+import { AiOutlineSearch } from "react-icons/ai";
 
 const SearchBar = () => {
   const [search, setSearch] = useState("");
@@ -14,7 +15,7 @@ const SearchBar = () => {
   const [selectedSelectItem, setSelectedSelectItem] = useState("");
   const [forecastData, setForecastData] = useState(null);
   const [currentUnit, setCurrentUnit] = useState("metric");
-  const debouncedValue = useDebounce(search, 600);
+  const debouncedValue = useDebounce(search, 700);
 
   useEffect(() => {
     if (debouncedValue !== "") {
@@ -32,7 +33,7 @@ const SearchBar = () => {
   useEffect(() => {
     if (debouncedValue !== "") {
       fetch(
-        `${WEATHER_API_URL}/forecast.json?key=${WEATHER_API_KEY}&q=${debouncedValue}&days=3&aqi=no&alerts=no`
+        `${WEATHER_API_URL}/forecast.json?key=${WEATHER_API_KEY}&q=${debouncedValue}&days=3&aqi=no&alerts=yes`
       )
         .then((response) => response.json())
         .then((data) => {
@@ -50,78 +51,47 @@ const SearchBar = () => {
     setSelectedSelectItem(selectedValue);
     setSearch(selectedValue);
   };
+
   if ((!currentWeatherData, !forecastData))
     return (
-      <div className="search-img-container">
-        <img
-          className="background-main"
-          alt="background"
-          src="/pictures/background.jpg"
-        ></img>
-        <div className="search-loading">
-          <h1 className="weather-app-title">Weather app</h1>
-          <div className="input-icon">
-            <input
-              className="input-look"
-              type="text"
-              placeholder="Search for cities"
-              onChange={handleChange}
-              value={search}
-            />
-            <span className="icon-input-look">
-              <AiOutlineSearch />
-            </span>
-          </div>
-          <SelectBar
-            classNameSelection={"selection"}
-            classNameContent={"select-content"}
-            handleSelectChange={handleSelectChange}
-            selectedSelectItem={selectedSelectItem}
-          />
-
-          <img
-            className="img-loading"
-            src="https://w.wallhaven.cc/full/r2/wallhaven-r252rq.jpg"
-            alt="spinning-clouds"
-          ></img>
-        </div>
-      </div>
+      <HomePage
+        search={search}
+        handleChange={handleChange}
+        handleSelectChange={handleSelectChange}
+        selectedSelectItem={selectedSelectItem}
+      />
     );
+
   return (
     <div className="search-container">
       <div className="input-location">
-        <div className="input-and-icon">
-          <input
-            className="input-look"
-            type="text"
-            placeholder="Search for cities"
-            onChange={handleChange}
-            value={search}
-          />
-          <span className="icon-input-look">
-            <AiOutlineSearch />
-          </span>
-
-          <button
-            className="units-button"
-            onClick={() =>
-              setCurrentUnit((unit) =>
-                unit === "metric" ? "imperial" : "metric"
-              )
-            }
-          >
-            {currentUnit === "metric" ? "Imperial" : "Metric"}
-          </button>
-        </div>
+        <input
+          className="input-look"
+          type="text"
+          placeholder="Search for cities"
+          onChange={handleChange}
+          value={search}
+        />
+        <span className="icon-input-look">
+          <AiOutlineSearch />
+        </span>
+        <button
+          className="units-button"
+          onClick={() =>
+            setCurrentUnit((unit) =>
+              unit === "metric" ? "imperial" : "metric"
+            )
+          }
+        >
+          {currentUnit === "metric" ? "Imperial" : "Metric"}
+        </button>
       </div>
-
       <SelectBar
         classNameSelection={"selection-inside"}
         classNameContent={"select-content-inside"}
         handleSelectChange={handleSelectChange}
         selectedSelectItem={selectedSelectItem}
       />
-
       <div className="current-hour-day">
         <div className="current-weather-display">
           <CurrentWeather

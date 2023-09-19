@@ -7,7 +7,7 @@
   background-color: transparent;
   outline: none;
   border: none;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   margin-top: 5px;
   font-size: 17px;
   &:hover {
@@ -33,6 +33,10 @@
   border-radius: 1rem;
   .city-label-select {
     background-color: #044766b6;
+    border-radius: 1rem;
+    color: white;
+    font-size: 20px;
+    font-weight: 200;
   }
   .select-item {
     cursor: pointer;
@@ -44,6 +48,8 @@
 }
 
 .selection-inside {
+  position: absolute;
+  top: 5.4%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -57,7 +63,7 @@
     box-shadow: 0px 0px 2px rgb(119, 209, 209);
     border-radius: 10px;
   }
-  .select-icon-inside {
+  .select-icon {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -75,10 +81,14 @@
   background-color: #0c384db6;
   width: 295px;
   border-radius: 1rem;
-  .city-label-select-inside {
-    background-color: #044766b6;
+  .city-label-select {
+    background-color: #66747ab6;
+    color: white;
+    font-size: 20px;
+    font-weight: 200;
+    border-radius: 1rem;
   }
-  .select-item-inside {
+  .select-item {
     cursor: pointer;
     &:hover {
       outline: none;

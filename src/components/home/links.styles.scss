@@ -1,0 +1,21 @@
+.links-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: rgb(190, 199, 216);
+    font-size: 24px;
+    margin: auto 18px;
+    transition: 0.4s;
+  }
+  a:hover {
+    transform: scale(1.3);
+  }
+}

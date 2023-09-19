@@ -8,7 +8,7 @@ const SelectBar = ({
   classNameSelection,
   classNameContent,
 }) => {
-  const selectItems = [
+  const optionItems = [
     { name: "Aleksinac", value: "Aleksinac" },
     { name: "Nis", value: "Nis Rs" },
     { name: "Belgrade", value: "Belgrade" },
@@ -17,9 +17,13 @@ const SelectBar = ({
   ];
 
   return (
-    <Select.Root value={selectedSelectItem} onValueChange={handleSelectChange}>
+    <Select.Root onValueChange={handleSelectChange}>
       <Select.Trigger className={classNameSelection}>
-        {selectedSelectItem ? selectedSelectItem : "Quick RS search"}
+        {selectedSelectItem ? (
+          selectedSelectItem
+        ) : (
+          <Select.Value placeholder="Quick RS search" />
+        )}
         <Select.Icon className="select-icon">
           <FiChevronDown />
         </Select.Icon>
@@ -28,7 +32,7 @@ const SelectBar = ({
       <Select.Content className={classNameContent}>
         <Select.Group>
           <Select.Label className="city-label-select">Serbia</Select.Label>
-          {selectItems.map((item, index) => {
+          {optionItems.map((item, index) => {
             return (
               <Select.Item
                 key={index}
